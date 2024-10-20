@@ -71,7 +71,7 @@ class GeoUtils {
         return this.withYmaps(() => {
             return new Promise((resolve, reject) => {
                 ymaps.geolocation.get({
-                    provider: 'yandex',
+                    provider: 'auto',
                     mapStateAutoApply: true
                 }).then((result) => {
                     const coordinates = result.geoObjects.get(0).geometry.getCoordinates();
