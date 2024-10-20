@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маршрут</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=aea93fc0-ae1d-42ce-b52d-f08be08cd8ac&lang=ru_RU" defer></script>
+</head>
+<body>
+    <main>
+        <input type="text" value="г. Могилев, космонавтов, 11" id="search-input">
+
+        <button class="btn-show-map" id="btn-show-map">Показать маршрут</button>
+        
+       
+    </main>
+
+    <div class="overlay-modal" id="overlay-modal">
+        <div class="overlay-modal__content">
+            <div class="map" id="map"></div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
