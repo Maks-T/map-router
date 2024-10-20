@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Открытие модального окна при нажатии на кнопку
     showMapButton.addEventListener('click', function () {
-        overlayModal.style.display = 'flex'; // Показываем модальное окно        
+        overlayModal.style.display = 'flex'; // Показываем модальное окно   
+        const routeBuilder = new RouteBuilder(searchPoint.value);     
     });
 
     // Закрытие модального окна по клику вне карты (если нужно)
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Пример использования:
-    const routeBuilder = new RouteBuilder(searchPoint.value);
+   
 });
 
 const debounce = (callback, delay) => {
@@ -166,8 +167,16 @@ class RouteBuilder {
 
             console.log( { optimalZoom, center })
 
+          
+
             this.map.setCenter(center);
-            this.map.setZoom(optimalZoom);
+            
+            if (isFinite(optimalZoom)) {
+                this.map.setZoom(optimalZoom);
+            } else {
+                this.map.setZoom(9);
+            }
+            
 
         }).catch((error) => {
             alert('Ошибка построения маршрута: ' + error.message);
