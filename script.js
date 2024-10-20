@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     overlayModal.addEventListener('click', function (e) {
         if (e.target === overlayModal) {
             overlayModal.style.display = 'none'; // Закрываем модальное окно
+            window.location.reload();
         }
     });
 
@@ -170,7 +171,7 @@ class RouteBuilder {
           
 
             this.map.setCenter(center);
-            
+
             if (isFinite(optimalZoom)) {
                 this.map.setZoom(optimalZoom);
             } else {

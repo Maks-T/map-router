@@ -56,15 +56,19 @@ input {
 }
 
 .overlay-modal__content {   
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 90%;
-    overflow: hidden;
-   
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    overflow: hidden;
+    
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
 }
 
 .map {
