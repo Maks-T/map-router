@@ -143,7 +143,7 @@ class RouteBuilder {
                 this.buildRoute(userCoords, this.destinationAddress);
             });
         }).catch((error) => {
-            alert('Не удалось получить координаты пользователя: ' + error.message);
+            alert('Не удалось получить координаты пользователя');
         });
     }
 
