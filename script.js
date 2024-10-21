@@ -3,37 +3,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const overlayModal = document.getElementById('overlay-modal');
     const searchPoint = document.getElementById('search-input');
 
-    // Открытие модального окна при нажатии на кнопку
+ 
     showMapButton.addEventListener('click', function () {
-        overlayModal.style.display = 'flex'; // Показываем модальное окно   
+        overlayModal.style.display = 'flex';
         const routeBuilder = new RouteBuilder(searchPoint.value);     
     });
 
-    // Закрытие модального окна по клику вне карты (если нужно)
+  
     overlayModal.addEventListener('click', function (e) {
         if (e.target === overlayModal) {
-            overlayModal.style.display = 'none'; // Закрываем модальное окно
-            window.location.reload();
+            overlayModal.style.display = 'none';
+            window.location.reload(); 
         }
     });
 
-    // Пример использования:
-   
 });
-
-const debounce = (callback, delay) => {
-  let timeoutId;
-
-  return (...args) => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-
-    timeoutId = setTimeout(() => {
-      callback(...args);
-    }, delay);
-  };
-}
 
 class GeoUtils {
     // Метод для проверки загрузки ymaps и обертки других методов
@@ -113,24 +97,14 @@ class RouteBuilder {
     // Метод для инициализации карты и построения маршрута
     initMap() {
         GeoUtils.getUserCoords().then((userCoords) => {
-            console.log('Координаты пользователя:', userCoords);
-
-            // Создаем карту с центром на координатах пользователя
+                   // Создаем карту с центром на координатах пользователя
             this.map = new ymaps.Map("map", {
                 center: userCoords,
                 zoom: 13
             });
 
             // Геокодирование: получение адреса по координатам пользователя
-            GeoUtils.getAddressFromCoords(userCoords).then(({ address }) => {
-                // Создаем метку в начальной точке с тултипом, отображающим адрес
-                const userPlacemark = new ymaps.Placemark(userCoords, {
-                    balloonContent: 'Ваше местоположение: ' + address // Отображаем адрес
-                });
-
-                // Добавляем метку на карту
-                this.map.geoObjects.add(userPlacemark);
-
+            GeoUtils.getAddressFromCoords(userCoords).then(({ address }) => {                           
                 // После того, как добавили метку, строим маршрут
                 this.buildRoute(address, this.destinationAddress);
             }).catch((error) => {
@@ -165,10 +139,6 @@ class RouteBuilder {
             const bounds =  points.getBounds();
 
             const { optimalZoom, center } = this.calculateOptimalParameters(bounds);
-
-            console.log( { optimalZoom, center })
-
-          
 
             this.map.setCenter(center);
 
